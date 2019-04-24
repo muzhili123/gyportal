@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>国家远程医疗中心 - 科研中心</title>
+  <link rel="stylesheet" href="/assets/css/base-a93efccaf2.css">
+  <link rel="stylesheet" href="/assets/css/common-1e8228b456.css">
+  <link rel="stylesheet" href="/assets/css/main-f5e627c10f.css">
+  <link rel="stylesheet" href="/assets/css/join-c1065689b4.css">
+</head>
+<body>
+  <script src="/js/axios-897d53a22d.min.js"></script>
+<script src="/js/js_init-772690fcbe.js"></script>
+<header class="header">
+  <div class="container header-bar">
+    <div class="logo"><a href="/page/main.html"></a></div>
+    <div class="search">
+      <input
+        type="text"
+        class="search-input"
+        onkeyup="keyups(event)"
+        placeholder="输入内容...">
+      <a href="javascript:void(0);" class="btn search-btn" onclick="searchs()">搜索</a>
+      <div class="mini-nav">
+        <a href="/">大首页</a>
+        <a href="/page/telem-colla.html">综合服务平台</a>
+      </div>
+    </div>
+    <div class="search-back">
+      <a href="/page/main.html">返回</a>
+    </div>
+  </div>
+  <div class="nav-bar">
+    <div class="container nav">
+      <div class="menu-group">
+        <div class="title"><a href="/page/main.html">首页</a></div>
+        <ul class="items">
+          <li class="item">
+            <a href="/page/about/overview.html">中心概况</a>
+          </li>
+          <li class="item">
+            <a href="/page/about/scope.html">业务范围</a>
+          </li>
+          <li class="item">
+            <a href="/page/about/organize.html">组织管理</a>
+          </li>
+          <li class="item">
+            <a href="/page/about/construct.html">系统建设</a>
+          </li>
+        </ul>
+      </div>
+      <div class="menu-group">
+        <div class="title"><a href="/page/news/notice.html">新闻</a></div>
+        <ul class="items">
+          <li class="item">
+            <a href="/page/news/notice.html">通知公告</a>
+          </li>
+          <li class="item">
+            <a href="/page/news/news.html">中心动态</a>
+          </li>
+          <li class="item">
+            <a href="/page/news/infos.html">行业资讯</a>
+          </li>
+          <li class="item">
+            <a href="/page/news/pic-news.html">图片新闻</a>
+          </li>
+        </ul>
+      </div>
+      <div class="menu-group">
+        <div class="title"><a href="/page/research/orgs.html">科研</a></div>
+        <ul class="items">
+          <li class="item">
+            <a href="/page/research/orgs.html">科研机构</a>
+          </li>
+          <li class="item">
+            <a href="/page/research/team.html">科研团队</a>
+          </li>
+          <li class="item">
+            <a href="/page/research/achievement.html">项目成果</a>
+          </li>
+          <li class="item">
+            <a href="/page/research/subject.html">技术专题</a>
+          </li>
+        </ul>
+      </div>
+      <div class="menu-group">
+        <div class="title"><a href="/page/join/condition.html">加盟</a></div>
+        <ul class="items">
+          <li class="item">
+            <a href="/page/join/condition.html">加盟条件</a>
+          </li>
+          <li class="item">
+            <a href="/page/join/apply.html">加盟申请</a>
+          </li>
+          <li class="item">
+            <a href="/page/join/feedback.html">意见反馈</a>
+          </li>
+          <li class="item">
+            <a href="/page/join/hospitals.html">协同医院</a>
+          </li>
+        </ul>
+      </div>
+      <div class="menu-group">
+        <div class="btn-group-col">
+          <!-- <div class="en"><a href="javascript: void(0);" onClick="cLang()">En</a></div> -->
+          <div class="en"><a href="javascript: alert('功能即将开放，敬请期待！');">En</a></div>
+          <div class="back"><a href="/">返回门户</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-bar-mob">
+    <div class="nav">
+      <div class="nav-item">
+        <a href="/page/main.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="/page/news/notice.html">新闻</a>
+      </div>
+      <div class="nav-item">
+        <a href="/page/research/orgs.html">科研</a>
+      </div>
+      <div class="nav-item">
+        <a href="/page/join/condition.html">加盟</a>
+      </div>
+    </div>
+    <div class="menu">
+      <span class="icon" onclick="toggles()"></span>
+    </div>
+  </div>
+  <div class="submenus">
+    <div class="nav">
+      <div class="nav-item">
+        <a href="/page/about/overview.html">中心概况</a>
+        <a href="/page/about/scope.html">业务范围</a>
+        <a href="/page/about/organize.html">组织管理</a>
+        <a href="/page/about/construct.html">系统建设</a>
+      </div>
+      <div class="nav-item">
+        <a href="/page/news/notice.html">通知公告</a>
+        <a href="/page/news/news.html">中心动态</a>
+        <a href="/page/news/infos.html">行业资讯</a>
+        <a href="/page/news/pic-news.html">图片新闻</a>
+      </div>
+      <div class="nav-item">
+        <a href="/page/research/orgs.html">科研机构</a>
+        <a href="/page/research/team.html">科研团队</a>
+        <a href="/page/research/achievement.html">项目成果</a>
+        <a href="/page/research/subject.html">技术专题</a>
+      </div>
+      <div class="nav-item">
+        <a href="/page/join/condition.html">加盟条件</a>
+        <a href="/page/join/apply.html">加盟申请</a>
+        <a href="/page/join/feedback.html">意见反馈</a>
+        <a href="/page/join/hospitals.html">协同医院</a>
+      </div>
+    </div>
+  </div>
+</header>
+<script>
+  function cLang() {
+    var name = window.location.pathname;
+    window.location.pathname = '/en' + name;
+    if (window.localStorage) {
+      localStorage.setItem('lang', 'en');
+    }
+  }
+
+  function toggles() {
+    var el = document.getElementsByClassName('submenus')[0];
+    if (el.style.display === 'block') {
+      el.style.display = 'none';
+    } else {
+      el.style.display = 'block';
+    }
+  }
+  
+  function searchs() {
+    var value = document.getElementsByClassName('search-input')[0].value;
+    location.href = '/page/search/?words=' + value + '&sort=';
+  }
+  function keyups(e) {
+    var evt = window.event || e;
+    if (evt.keyCode === 13) {
+      searchs();
+    }
+  }
+</script>
+  <section class="section">
+    <div class="banner">
+      <img src="http://www.htcc.org.cn/static/images/ky/bg.png" alt="">
+      <div class="container">
+        <div class="nav-bar">
+          <span><a href="/page/main.html">首页</a></span>
+          <span><a href="/page/research/orgs.html">科研中心</a></span>
+          <span>科研机构</span>
+        </div>
+        <h2 class="nav-title">科研中心</h2>
+      </div>
+    </div>
+    <div class="container">
+      <ul class="nav-menu">
+          <li class="actived"><a href="/page/research/orgs.html">科研机构</a></li>
+          <li><a href="/page/research/team.html">科研团队</a></li>
+          <li><a href="/page/research/achievement.html">项目成果</a></li>
+          <li><a href="/page/research/subject.html">技术专题</a></li>
+      </ul>
+      <h2 class="content-title">
+        科研<span style="color: #00A0B4;">机构</span>
+      </h2>
+      <div class="content">
+        <ul class="orgs row1">
+          <li class="orgs-item">
+            <img src="http://www.htcc.org.cn/static/images/ky/org-1.png" alt="">
+            <h2>河南省数字医疗工程技术研究中心</h2>
+          </li>
+          <li class="orgs-item">
+            <img src="http://www.htcc.org.cn/static/images/ky/org-2.png" alt="">
+            <h2>河南省数字化远程医疗服务工程实验室</h2>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <div class="footer">
+  <div class="container">
+    <div class="link">
+      <div class="title">友情链接</div>
+      <div class="links" id="link">
+      </div>
+    </div>
+  </div>
+  <div class="footer-top">
+    <div class="container">
+      <div class="contact-items">
+        <div class="item">
+          <div>
+            <span>分诊电话：0371 - 6796 6212 / 6796 6509</span><br>
+            <span>会诊电话：0371 - 6796 6217</span>
+          </div>
+        </div>
+        <div class="item">
+          <div>
+            <span>投诉电话：0371 - 6796 6213 / 150 3712 9939</span><br>
+            <span>远程教育：0371 - 6796 6210</span>
+          </div>
+        </div>
+        <div class="item">
+          <div>
+            <span>业务组电话：0371 - 6691 3001</span><br>
+            <span>会务组电话：0371 - 6796 6215</span>
+          </div>
+        </div>
+        <div class="item" id="access">
+          <div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-text">
+        <span>Copyright©2014 www.hnsycyxzx.com All Rights Reserved | <a href="http://www.miibeian.gov.cn">豫ICP备09042695号-7</a></span>
+        <span>
+          <span>版权所有：国家远程医疗中心</span>
+          <span>技术支持：全息云通健康科技（北京）有限公司</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/js/polyfill-85fcd06797.min.js"></script>
+<script src="/js/jquery-1f0590b2ca.min.js"></script>
+<script>
+// 获取浏览器信息
+function getBrowserInfo(){
+  var Sys = {};
+  var ua = navigator.userAgent.toLowerCase();
+  var re =/(msie|firefox|chrome|opera|version).*?([\d.]+)/;
+  var m = ua.match(re);
+  Sys.browser = m[1].replace(/version/, 'safari');
+  Sys.ver = m[2];
+  return Sys;
+}
+//获取当前的浏览器信息
+var sys = getBrowserInfo();
+var verIsLow = false;
+//sys.browser得到浏览器的类型，sys.ver得到浏览器的版本
+console.log('浏览器：' + sys.browser + '，版本：' + sys.ver);
+var browser = {
+  msie: 9,
+  firefox: 16,
+  chrome: 26,
+  opera: 15,
+  safari: 6.1,
+};
+// 浏览器是否会出现兼容性问题
+var verIsOk = browser[sys.browser] > parseFloat(sys.ver);
+if (verIsOk) {
+  var first = document.body.firstChild;//得到页面的第一个元素 
+  var newItem = document.createElement('div')
+  var textnode = document.createTextNode('您的浏览器版本较低，可能会影响您的正常体验，建议升级浏览器！');
+  newItem.className += ' browser-tip';
+  newItem.appendChild(textnode);
+  document.body.insertBefore(newItem, first);
+}
+
+// 获取访客量
+function getNumbers (){
+  axios.get($baseUrl + '/getVisitorCount').then(function(res) {
+    render('#access', '<span class="text-lg">您是第 <strong>' + res.data.data + '</strong> 位访客</span>');
+  });
+};
+
+// 访客量 + 1
+function addAccessNums() {
+  axios.get($baseUrl + '/increaseVisitorCount')
+    .then(function () {
+      getNumbers();
+    });
+};
+
+// 获取 Cookie
+function getCookie() {
+  var name = 'user=';
+  var ca = document.cookie.split(';');
+  for(var i = 0; i < ca.length; i ++) {
+    var c = ca[i].trim();
+    if (c.indexOf(name) === 0)
+    return c.substring(name.length, c.length);
+  }
+  return '';
+};
+
+// 设置 Cookie
+function setCookie() {
+  var d = new Date();
+  d.setTime(d.getTime() + (1000 * 60 * 60 * 24));
+  var expires = 'expires=' + d.toGMTString();
+  document.cookie = 'user=visitor; ' + expires;
+};
+
+// 获取访客量
+function getAccess () {
+  if (!getCookie()) {
+    setCookie();
+    addAccessNums();
+  } else {
+    getNumbers();
+  }
+};
+
+// 渲染
+function render (el, template) {
+  $(el).html('');
+  $(el).append(template);
+};
+
+// 获取友情链接
+function getFriendLinks () {
+  axios.get($baseUrl + '/resource/findFriendLink')
+    .then(function(res) {
+      var list = res.data.data;
+      var template = ''
+      for (var i = 0; i < list.length; i += 1) {
+        list[i]
+        template += '<a href="' + list[i].url + '">' + list[i].name + '</a>';
+      }
+      render('#link', template);
+    });
+};
+
+getAccess();
+getFriendLinks();
+</script>
+</body>
+</html>

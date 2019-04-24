@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>远程医疗协同平台</title>
+  <link rel="stylesheet" href="/assets/css/base-a93efccaf2.css">
+  <link rel="stylesheet" href="/assets/css/index-a0824ae80f.css">
+  <script src="/js/axios-897d53a22d.min.js"></script>
+  <script src="/js/js_init-772690fcbe.js"></script>
+</head>
+<body class="telem">
+  <div class="main">
+    <div class="hd-control">
+      <div>
+        <img src="http://www.htcc.org.cn/static/images/s-logo-en.png" alt="logo" class="logo">
+        <a href="/" class="button">返回</a>
+      </div>
+    </div>
+    <div class="content">
+      <div class="cards">
+        <div class="tabs" id="tabs">
+          <div class="tabs-item activated" tabIndex="1">远程协同</div>
+          <div class="tabs-item" tabIndex="2">便民健康</div>
+          <div class="tabs-item" tabIndex="3">医疗系统</div>
+          <div class="tabs-item" tabIndex="4">平台管理</div>
+        </div>
+        <div class="tab-content" id="tabs-content">
+          <div class="icons">
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com:7022/tmsclinic/login/login.action">综合会诊</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com:7022/tmsimage/login/login.action?model=image">影像诊断</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com:7037">病理诊断</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com:7024/MedExSSO/Index.aspx">心电诊断</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com:7006/rcs/base">远程门诊</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com:7004/sxzz/base">双向转诊</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.wisdommedical.cn">远程教育</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com">远程监护</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com:7028">呼叫中心</a></div>
+          </div>
+          <div class="icons" style="display: none;">
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">在线问诊</a></div>
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">陪诊服务</a></div>
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">健康管理</a></div>
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">家医签约</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.ehaoyao.com/">在线药房</a></div>
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">药事服务</a></div>
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">健康咨询</a></div>
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">健康资讯</a></div>
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">电子健康档案</a></div>
+          </div>
+          <div class="icons" style="display: none;">
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">云HIS</a></div>
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">云LIS</a></div>
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">云影像</a></div>
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">云心电</a></div>
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">云药房</a></div>
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">合理用药</a></div>
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">临床路径</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.metstr.com/login.aspx?mode=User&user=k99612&pass=247122&class=BB">临床诊疗库</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com:7027/wanfang/zdyfy.html">电子图书馆</a></div>
+          </div>
+          <div class="icons" style="display: none;">
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com:7001/serverProject/base">综合管理</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com:7025">应急指挥</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com:7004/operationsServer/base">平台运维</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com:7004/monitorServer/base">平台监控</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com:7004/registerServer/base">注册管理</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com:7004/registerServer/platform/business/BoRegMedicaorg/zhuce">加盟申请</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-content">
+      <span>Copyright©2014 www.hnsycyxzx.com All Rights Reserved | <a href="http://www.miibeian.gov.cn">豫ICP备09042695号-7</a></span><br>
+      <span>
+        <span>版权所有：国家远程医疗中心</span>
+        <span>技术支持：全息云通健康科技（北京）有限公司</span>
+      </span>
+    </div>
+  </div>
+  <script src="/js/polyfill-85fcd06797.min.js"></script>
+  <script src="/js/jquery-1f0590b2ca.min.js"></script>
+  <script src="/js/index-ef1e210cdb.js"></script>
+  <script src="/js/tag-change-1d74c5f61f.js"></script>
+</body>
+</html>

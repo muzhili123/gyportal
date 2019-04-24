@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.gyportal.repository.mybatis.NewsRepository">
+    <resultMap id="newsMap" type="com.gyportal.model.News">
+        <id column="id" property="id" />
+        <result column="issuer" property="issuer" />
+        <result column="title" property="title" />
+        <result column="tabloid" property="tabloid" />
+        <result column="content" property="content" />
+        <result column="type" property="type" />
+        <result column="url" property="url" />
+        <result column="image" property="image" />
+        <result column="page_view" property="page_view" />
+        <result column="publish_date" property="publish_date" />
+        <result column="update_date" property="update_date" />
+        <result column="effective" property="effective" />
+        <result column="stick" property="stick" />
+        <result column="hot" property="hot" />
+        <collection property="attachments" ofType="com.gyportal.model.Attachment">
+            <result  property="name" column="name"/>
+            <result  property="url" column="path"/>
+        </collection>
+    </resultMap>
+
+    <!-- 定义resultMap，type为HashMap -->
+    <resultMap id="partNewsMap" type="java.util.HashMap">
+        <id column="id" property="id" />
+        <result column="title" property="title" />
+        <result column="tabloid" property="tabloid" />
+        <result column="type" property="type" />
+        <result column="url" property="url" />
+        <result column="image" property="image" />
+        <result column="page_view" property="page_view" />
+        <result column="publish_date" property="publish_date" />
+        <result column="update_date" property="update_date" />
+        <result column="stick" property="stick" />
+        <result column="hot" property="hot" />
+    </resultMap>
+
+    <!-- 获取所有新闻列表 -->
+    <select id="findAll" resultMap="partNewsMap">
+        <![CDATA[ select id,title,tabloid,type,url,image,page_view,publish_date,update_date,stick,hot from ${tableName} where effective = 1 and type != '静态' order by publish_date desc ]]>
+        <if test="pageSize != null and start != null ">
+            limit #{start},#{pageSize}
+        </if>
+    </select>
+
+    <!-- 关键字检索 -->
+    <select id="matchNews" resultMap="newsMap">
+        <![CDATA[ select * from ${tableName} where MATCH (title,content) AGAINST (#{keyWords} IN BOOLEAN MODE) and effective = 1]]>
+        <if test="type != null">
+            and type = #{type}
+        </if>
+        <if test="sort != null">
+            order by publish_date desc
+        </if>
+        <if test="pageSize != null and start != null ">
+            limit #{start},#{pageSize}
+        </if>
+    </select>
+
+    <select id="newsLike" resultMap="newsMap">
+        select * from ${tableName} where title like #{keyWords} and effective = 1 order by publish_date desc
+        <if test="type != null">
+            and type = #{type}
+        </if>
+        <if test="pageSize != null and start != null ">
+            limit #{start},#{pageSize}
+        </if>
+    </select>
+
+    <!-- type获取新闻列表 -->
+    <select id="findAllByType" resultMap="partNewsMap">
+        <![CDATA[ select id,title,tabloid,type,url,image,page_view,publish_date,update_date,stick,hot from ${tableName} where type = #{type} and effective = 1 order by publish_date desc ]]>
+        <if test="pageSize != null and start != null ">
+            limit #{start},#{pageSize}
+        </if>
+    </select>
+
+    <select id="findStaticArticle" resultMap="partNewsMap">
+        <![CDATA[ select id,title,tabloid,type,url,image,page_view,publish_date,update_date,stick,hot from ${tableName} where type = "静态" and effective = 1]]>
+    </select>
+
+    <!-- 获取最新新闻列表 -->
+    <select id="getLatest" resultMap="partNewsMap">
+        <![CDATA[ select id,title,tabloid,type,url,image,page_view,publish_date,update_date,stick,hot from ${tableName} where effective = 1 order by publish_date desc ]]>
+        <if test="count">
+            limit 0,#{count}
+        </if>
+    </select>
+
+    <!-- 通过类型获取最新新闻列表 -->
+    <select id="getLatestByType" resultMap="partNewsMap">
+        <![CDATA[ select id,title,tabloid,type,url,image,page_view,publish_date,update_date,stick,hot from ${tableName} where type = #{type} and effective = 1 order by publish_date desc ]]>
+        <if test="count">
+            limit 0,#{count}
+        </if>
+    </select>
+
+    <!-- 测试用-图片新闻列表 -->
+    <select id="getImageNews" resultMap="partNewsMap">
+        <![CDATA[ select id,title,tabloid,type,url,image,page_view,publish_date,update_date,stick,hot from ${tableName} where type = #{type} and effective = 1 ]]>
+        <if test="count">
+            limit 0,#{count}
+        </if>
+    </select>
+
+    <!-- 获取轮播图 -->
+    <select id="getBanners" resultMap="partNewsMap">
+        select id,title,tabloid,type,url,image,page_view,publish_date,update_date,stick,hot from ${tableName}
+        where type = '图片新闻' and effective = 1 and url != "" and stick = 1 order by update_date desc
+    </select>
+
+    <!-- 新闻数量 -->
+    <select id="getNewsCount" resultType="Integer">
+        select count(*) from ${tableName} where effective = 1 and type != '静态'
+    </select>
+
+    <!-- type新闻数量 -->
+    <select id="getCountByType" resultType="Integer">
+        SELECT count(*) FROM ${tableName} WHERE type = #{type} and effective = 1
+    </select>
+
+    <!-- 检索新闻数量 -->
+    <select id="getMatchNewsCount" resultType="Integer">
+        <![CDATA[ select count(*) from ${tableName} where MATCH (title,content) AGAINST (#{keyWords} IN BOOLEAN MODE) and effective = 1 ]]>
+        <if test="type != null">
+            and type = #{type}
+        </if>
+    </select>
+
+    <select id="getNewsLikeCount" resultType="Integer">
+        <![CDATA[ select count(*) from ${tableName} where title like #{keyWords} and effective = 1 ]]>
+        <if test="type != null">
+            and type = #{type}
+        </if>
+    </select>
+
+    <!-- id查询新闻 -->
+    <select id="findNewsById" resultMap="newsMap">
+        <![CDATA[SELECT n.* FROM ${tableName} as n]]>
+        <where>
+            n.id = #{id}
+        </where>
+    </select>
+
+    <!-- 获取当前插入数据的ID -->
+    <select id="findLastInsertId" resultType="Integer">
+        <![CDATA[ SELECT id FROM ${tableName} order by id desc limit 1]]>
+    </select>
+
+    <!-- 热门新闻 -->
+    <select id="getHotNews" resultMap="newsMap">
+        SELECT * FROM ${tableName} where hot = 1 and effective = 1 ORDER BY page_view DESC LIMIT 1
+    </select>
+
+    <!-- 清除热门新闻 -->
+    <update id="clearHotNews">
+        update ${tableName} set hot = 0
+    </update>
+
+    <!-- 设置热门新闻 -->
+    <update id="setHotNews">
+        update ${tableName} set hot = 1 where id = #{id}
+    </update>
+
+    <!-- 上一篇 -->
+    <select id="fetchFrontNewsById" resultMap="newsMap">
+        SELECT * FROM ${tableName} WHERE <![CDATA[ id < ${id} ]]> AND type = #{type} and effective = 1 ORDER by publish_date LIMIT 1
+    </select>
+
+    <!-- 下一篇 -->
+    <select id="fetchBehindNewsBYId" resultMap="newsMap">
+        SELECT * FROM ${tableName} WHERE <![CDATA[ id < ${id} ]]> AND type = #{type} and effective = 1 ORDER by DESC publish_date LIMIT 1
+    </select>
+
+    <!-- 查询所有内容 -->
+    <select id="getAllNews" resultMap="newsMap">
+        SELECT * FROM ${tableName} where effective = 1
+    </select>
+
+    <!--&lt;!&ndash; 新建新闻信息 &ndash;&gt;-->
+    <insert id="insertNews" parameterType="com.gyportal.model.News">
+        <selectKey keyProperty="id" resultType="java.lang.Integer"
+                   order="AFTER">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into ${tableName} (issuer,title,tabloid,content,type,url,image,page_view,publish_date,update_date,effective,stick,hot)
+        values
+        (#{news.issuer},#{news.title},#{news.tabloid},#{news.content},#{news.type},#{news.url},
+        #{news.image},#{news.page_view},#{news.publish_date},#{news.update_date},#{news.effective},#{news.stick},#{news.hot})
+    </insert>
+
+    <!-- 更新新闻信息 -->
+    <update id="updateNews" parameterType="com.gyportal.model.News">
+        update ${tableName} set
+        issuer = #{news.issuer},
+        title = #{news.title},
+        tabloid = #{news.tabloid},
+        content = #{news.content},
+        type = #{news.type},
+        url = #{news.url},
+        image = #{news.image},
+        page_view = #{news.page_view},
+        publish_date = #{news.publish_date},
+        update_date = #{news.update_date},
+        stick = #{news.stick},
+        hot = #{news.hot}
+        <where>
+            id = #{news.id}
+        </where>
+    </update>
+
+    <!-- 删除新闻信息:新 -->
+    <update id="deleteNews">
+        update ${tableName} set
+        issuer = #{issuer},
+        update_date = #{update_date},
+        effective = 0
+        <where>
+            <if test="groupId !=null">
+                id in
+                <foreach collection="groupId" item="item" index="index"
+                         open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </update>
+
+    <!-- 删除新闻信息:旧 -->
+    <!--<delete id="deleteNews">-->
+        <!--delete from news-->
+        <!--<where>-->
+            <!--<if test="groupId !=null">-->
+                <!--id in-->
+                <!--<foreach collection="groupId" item="item" index="index"-->
+                         <!--open="(" separator="," close=")">-->
+                    <!--#{item}-->
+                <!--</foreach>-->
+            <!--</if>-->
+        <!--</where>-->
+    <!--</delete>-->
+
+</mapper>

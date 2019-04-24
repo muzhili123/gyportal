@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>News Center</title>
+  <link rel="stylesheet" href="/assets/css/base-a93efccaf2.css">
+  <link rel="stylesheet" href="/assets/css/common-1e8228b456.css">
+  <link rel="stylesheet" href="/assets/css/main-f5e627c10f.css">
+  <link rel="stylesheet" href="/assets/css/join-c1065689b4.css">
+  <link rel="stylesheet" href="/assets/css/style-848df69e74.css">
+</head>
+<body>
+  <script src="/js/axios-897d53a22d.min.js"></script>
+<script src="/js/js_init-772690fcbe.js"></script>
+<header class="header">
+  <div class="container header-bar">
+    <div class="logo-en"><a href="/en/page/main.html"></a></div>
+    <div class="search">
+      <input
+        type="text"
+        class="search-input"
+        onkeyup="keyups(event)"
+        placeholder="Enter Search Text...">
+      <a href="javascript:void(0);" class="btn search-btn" onclick="searchs()">Search</a>
+      <div class="mini-nav">
+        <a href="/en">Home</a>
+        <a href="/en/page/telem-colla.html">Platform</a>
+      </div>
+    </div>
+    <div class="search-back">
+      <a href="/en/page/main.html">Return</a>
+    </div>
+  </div>
+  <div class="nav-bar">
+    <div class="container nav-en">
+      <div class="menu-group">
+        <div class="title"><a href="/en/page/main.html">Home</a></div>
+        <ul class="items">
+          <li class="item">
+            <a href="/en/page/about/overview.html">About Us</a>
+          </li>
+          <li class="item">
+            <a href="/en/page/about/scope.html">Business Scope</a>
+          </li>
+          <li class="item">
+            <a href="/en/page/about/organize.html">Organization & Management</a>
+          </li>
+          <li class="item">
+            <a href="/en/page/about/construct.html">System Construction</a>
+          </li>
+        </ul>
+      </div>
+      <div class="menu-group">
+        <div class="title"><a href="/en/page/news/notice.html">News</a></div>
+        <ul class="items">
+          <li class="item">
+            <a href="/en/page/news/notice.html">Announcement</a>
+          </li>
+          <li class="item">
+            <a href="/en/page/news/news.html">Events</a>
+          </li>
+          <li class="item">
+            <a href="/en/page/news/infos.html">Industry News</a>
+          </li>
+          <li class="item">
+            <a href="/en/page/news/pic-news.html">Picture News</a>
+          </li>
+        </ul>
+      </div>
+      <div class="menu-group">
+        <div class="title"><a href="/en/page/research/orgs.html">Research</a></div>
+        <ul class="items">
+          <li class="item">
+            <a href="/en/page/research/orgs.html">Research Institutions</a>
+          </li>
+          <li class="item">
+            <a href="/en/page/research/team.html">Research Team</a>
+          </li>
+          <li class="item">
+            <a href="/en/page/research/achievement.html">Project Achievements</a>
+          </li>
+          <li class="item">
+            <a href="/en/page/research/subject.html">Technical Topics</a>
+          </li>
+        </ul>
+      </div>
+      <div class="menu-group">
+        <div class="title"><a href="/en/page/join/condition.html">Join</a></div>
+        <ul class="items">
+          <li class="item">
+            <a href="/en/page/join/condition.html">Join Conditions</a>
+          </li>
+          <li class="item">
+            <a href="/en/page/join/apply.html">Join Application</a>
+          </li>
+          <li class="item">
+            <a href="/en/page/join/feedback.html">Feedback</a>
+          </li>
+          <li class="item">
+            <a href="/en/page/join/hospitals.html">Cooperative Hospitals</a>
+          </li>
+        </ul>
+      </div>
+      <div class="menu-group">
+        <div class="btn-group-col">
+          <div class="en"><a href="javascript: void(0);" title="Change language" onClick="cLang()">Cn</a></div>
+          <div class="back"><a href="/en">Return</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-bar-mob">
+    <div class="nav">
+      <div class="nav-item">
+        <a href="/en/page/main.html">Home</a>
+      </div>
+      <div class="nav-item">
+        <a href="/en/page/news/notice.html">News</a>
+      </div>
+      <div class="nav-item">
+        <a href="/en/page/research/orgs.html">Research</a>
+      </div>
+      <div class="nav-item">
+        <a href="/en/page/join/condition.html">Join</a>
+      </div>
+    </div>
+    <div class="menu">
+      <span class="icon" onclick="toggles()"></span>
+    </div>
+  </div>
+  <div class="submenus">
+    <div class="nav">
+      <div class="nav-item">
+        <a href="/en/page/about/overview.html">About Us</a>
+        <a href="/en/page/about/scope.html">Scope</a>
+        <a href="/en/page/about/organize.html">Management</a>
+        <a href="/en/page/about/construct.html">Construction</a>
+      </div>
+      <div class="nav-item">
+        <a href="/en/page/news/notice.html">Announce</a>
+        <a href="/en/page/news/news.html">Events</a>
+        <a href="/en/page/news/infos.html">Industry</a>
+        <a href="/en/page/news/pic-news.html">Picture</a>
+      </div>
+      <div class="nav-item">
+        <a href="/en/page/research/orgs.html">Institution</a>
+        <a href="/en/page/research/team.html">Team</a>
+        <a href="/en/page/research/achievement.html">Achievement</a>
+        <a href="/en/page/research/subject.html">Topic</a>
+      </div>
+      <div class="nav-item">
+        <a href="/en/page/join/condition.html">Condition</a>
+        <a href="/en/page/join/apply.html">Application</a>
+        <a href="/en/page/join/feedback.html">Feedback</a>
+        <a href="/en/page/join/hospitals.html">Hospital</a>
+      </div>
+    </div>
+  </div>
+</header>
+<script>
+  function cLang() {
+    var name = window.location.pathname;
+    window.location.pathname = name.replace(/^(\/en)/g, '');
+    if (window.localStorage) {
+      localStorage.setItem('lang', 'cn');
+    }
+  }
+
+  function toggles() {
+    var el = document.getElementsByClassName('submenus')[0];
+    if (el.style.display === 'block') {
+      el.style.display = 'none';
+    } else {
+      el.style.display = 'block';
+    }
+  }
+  
+  function searchs() {
+    var value = document.getElementsByClassName('search-input')[0].value;
+    location.href = '/en/page/search/?words=' + value + '&sort=';
+  }
+  function keyups(e) {
+    var evt = window.event || e;
+    if (evt.keyCode === 13) {
+      searchs();
+    }
+  }
+</script>
+  <section class="section">
+    <div class="banner">
+      <img src="http://www.htcc.org.cn/static/images/sub/news-bg.png" alt="">
+      <div class="container">
+        <div class="nav-bar">
+          <span><a href="/en/page/main.html">Home</a></span>
+          <span><a href="/en/page/news/notice.html">News Center</a></span>
+          <span>Announcement</span>
+        </div>
+        <h2 class="nav-title">News Center</h2>
+      </div>
+    </div>
+    <div class="container">
+      <ul class="nav-menu">
+        <li class="actived"><a href="/en/page/news/notice.html">Announcement</a></li>
+        <li><a href="/en/page/news/news.html">Events</a></li>
+        <li><a href="/en/page/news/infos.html">Industry News</a></li>
+        <li><a href="/en/page/news/pic-news.html">Picture News</a></li>
+      </ul>
+      <h2 class="content-title">
+        <span style="color: #00A0B4;">Announcement</span>
+      </h2>
+      <div class="content on">
+        <div class="center-content" id="content-list">
+        </div>
+        <div class="pagination"></div>
+      </div>
+    </div>
+  </section>
+  <div class="footer">
+  <div class="container">
+    <div class="link">
+      <div class="title">Friend Link</div>
+      <div class="links" id="link">
+      </div>
+    </div>
+  </div>
+  <div class="footer-top">
+    <div class="container">
+      <div class="contact-items">
+        <div class="item">
+          <div>
+            <span>Triage Call: 0371 - 6796 6212 / 6796 6509</span><br>
+            <span>Consultation Call: 0371 - 6796 6217</span>
+          </div>
+        </div>
+        <div class="item">
+          <div>
+            <span>Complaint Call: 0371 - 6796 6213 / 150 3712 9939</span><br>
+            <span>Remote Education: 0371 - 6796 6210</span>
+          </div>
+        </div>
+        <div class="item">
+          <div>
+            <span>Business Group Call: 0371 - 6691 3001</span><br>
+            <span>Conference Group Call: 0371 - 6796 6215</span>
+          </div>
+        </div>
+        <div class="item" id="access">
+          <div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-text">
+        <span>Copyright©2014 www.hnsycyxzx.com All Rights Reserved | <a href="http://www.miibeian.gov.cn">豫ICP备09042695号-7</a></span>
+        <span>
+          <span>All rights reserved: National Telemedicine Center of China.</span>
+          <span>Technical Support: HoloAlpha Health Technology (Wuhan) Co.,Ltd.</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/js/polyfill-85fcd06797.min.js"></script>
+<script src="/js/jquery-1f0590b2ca.min.js"></script>
+<script>
+function getBrowserInfo(){
+  var Sys = {};
+  var ua = navigator.userAgent.toLowerCase();
+  var re =/(msie|firefox|chrome|opera|version).*?([\d.]+)/;
+  var m = ua.match(re);
+  Sys.browser = m[1].replace(/version/, 'safari');
+  Sys.ver = m[2];
+  return Sys;
+}
+var sys = getBrowserInfo();
+var verIsLow = false;
+console.log('BrowserInfo' + sys.browser + ', Version：' + sys.ver);
+var browser = {
+  msie: 9,
+  firefox: 16,
+  chrome: 26,
+  opera: 15,
+  safari: 6.1,
+};
+var verIsOk = browser[sys.browser] > parseFloat(sys.ver);
+if (verIsOk) {
+  var first = document.body.firstChild;
+  var newItem = document.createElement('div')
+  var textnode = document.createTextNode('Your browser version is lower, Please upgrade your browser!');
+  newItem.className += ' browser-tip';
+  newItem.appendChild(textnode);
+  document.body.insertBefore(newItem, first);
+}
+
+function getNumbers (){
+  axios.get($baseUrl + '/getVisitorCount').then(function(res) {
+    render('#access', '<span class="text-lg">You are the <strong>' + res.data.data + '</strong>th visitor</span>');
+  });
+};
+
+function addAccessNums() {
+  axios.get($baseUrl + '/increaseVisitorCount')
+    .then(function () {
+      getNumbers();
+    });
+};
+
+function getCookie() {
+  var name = 'user=';
+  var ca = document.cookie.split(';');
+  for(var i = 0; i < ca.length; i ++) {
+    var c = ca[i].trim();
+    if (c.indexOf(name) === 0)
+    return c.substring(name.length, c.length);
+  }
+  return '';
+};
+
+function setCookie() {
+  var d = new Date();
+  d.setTime(d.getTime() + (1000 * 60 * 60 * 24));
+  var expires = 'expires=' + d.toGMTString();
+  document.cookie = 'user=visitor; ' + expires;
+};
+
+function getAccess () {
+  if (!getCookie()) {
+    setCookie();
+    addAccessNums();
+  } else {
+    getNumbers();
+  }
+};
+
+function render (el, template) {
+  $(el).html('');
+  $(el).append(template);
+};
+
+function getFriendLinks () {
+  axios.get($baseUrl + '/resource/findFriendLink')
+    .then(function(res) {
+      var list = res.data.data;
+      var template = ''
+      var lang = localStorage.getItem('lang');
+      if (lang === 'en') {
+        for (var i = 0; i < list.length; i += 1) {
+          list[i]
+          template += '<a href="' + list[i].url + '" target="_blank">' + list[i].nameEn + '</a>';
+        }
+      } else {
+        for (var i = 0; i < list.length; i += 1) {
+          list[i]
+          template += '<a href="' + list[i].url + '" target="_blank">' + list[i].name + '</a>';
+        }
+      }
+      render('#link', template);
+    });
+};
+
+getAccess();
+getFriendLinks();
+</script>
+  <script src="/js/jquery-e37c65ca04.pagination.js"></script>
+  <script src="/js/news-3be0ed5efb.js"></script>
+</body>
+</html>

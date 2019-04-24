@@ -1,0 +1,146 @@
+version: '3.4'
+services:
+    ntc-ui:
+        image: daocloud.io/buxiaomo/ntc-ui:1.8
+        ports:
+            - 80:80/tcp
+        networks:
+            quanxi:
+                aliases:
+                    - ntc-ui
+        configs:
+          - source: nginx
+            target: /etc/nginx/nginx.conf
+        volumes:
+            - ./data/www:/var/www/html:rw
+        deploy:
+            mode: replicated
+            replicas: 1
+            update_config:
+                order: start-first
+                parallelism: 1
+                delay: 10s
+        logging:
+            driver: json-file
+            options:
+                max-file: '3'
+                max-size: 100m
+
+    ntc-server-ui:
+        image: daocloud.io/buxiaomo/ntc-server-ui:1.8
+        ports:
+            - 8081:80/tcp
+        networks:
+            quanxi:
+                aliases:
+                    - ntc-server-ui
+        configs:
+          - source: nginx
+            target: /etc/nginx/nginx.conf
+        deploy:
+            mode: replicated
+            replicas: 1
+            update_config:
+                order: start-first
+                parallelism: 1
+                delay: 10s
+        logging:
+            driver: json-file
+            options:
+                max-file: '3'
+                max-size: 100m
+
+    gyportal:
+        image: daocloud.io/buxiaomo/gyportal:1.8
+        ports:
+            - 8080:8080/tcp
+        networks:
+            quanxi:
+                aliases:
+                    - gyportal
+        volumes:
+            - ./data/www:/var/www/html:rw
+        deploy:
+            mode: replicated
+            replicas: 1
+            update_config:
+                order: start-first
+                parallelism: 1
+                delay: 10s
+        logging:
+            driver: json-file
+            options:
+                max-file: '3'
+                max-size: 100m
+
+    mysql:
+        image: mysql:5.7.20
+        ports:
+            - 3306:3306/tcp
+        networks:
+            quanxi:
+                aliases:
+                    - mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=gyportal
+            - MYSQL_USER=gyportal
+            - MYSQL_PASSWORD=Rohsur3U
+        configs:
+          - source: mysql
+            target: /etc/mysql/mysql.conf.d/mysqld.cnf
+        volumes:
+            - ./data/mysql:/var/lib/mysql:rw
+        deploy:
+            mode: replicated
+            replicas: 1
+            update_config:
+                order: stop-first
+                parallelism: 1
+                delay: 10s
+        healthcheck:
+            test: ["CMD-SHELL", "mysql -uroot -proot -An -e 'show databases;' &> /dev/null || exit 1"]
+            interval: 10s
+            timeout: 5s
+            retries: 3
+        logging:
+            driver: json-file
+            options:
+                max-file: '3'
+                max-size: 100m
+
+    upgrade:
+        image: daocloud.io/buxiaomo/ntc-auto-upgrade:master-5715254
+        ports:
+            - 10000:10000/tcp
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock:ro
+        networks:
+            quanxi:
+                aliases:
+                    - ntc-auto-upgrade
+        deploy:
+            mode: replicated
+            replicas: 1
+            update_config:
+                order: start-first
+                parallelism: 1
+                delay: 10s
+            placement:
+                constraints:
+                    - node.role == manager
+        logging:
+            driver: json-file
+            options:
+                max-file: '3'
+                max-size: 100m
+
+configs:
+    nginx:
+        file: ./conf/nginx.conf
+    mysql:
+        file: ./conf/mysqld.cnf
+
+networks:
+    quanxi:
+        external: true

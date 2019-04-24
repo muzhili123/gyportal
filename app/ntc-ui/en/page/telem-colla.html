@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Telemedicine Collaboration</title>
+  <link rel="stylesheet" href="/assets/css/base-a93efccaf2.css">
+  <link rel="stylesheet" href="/assets/css/index-a0824ae80f.css">
+  <script src="/js/axios-897d53a22d.min.js"></script>
+  <script src="/js/js_init-772690fcbe.js"></script>
+</head>
+<body class="telem">
+  <div class="main">
+    <div class="hd-control">
+      <div>
+        <img src="http://www.htcc.org.cn/static/images/s-logo.png" alt="logo" class="logo">
+        <a href="/en" class="button">Return</a>
+      </div>
+    </div>
+    <div class="content">
+      <div class="cards">
+        <div class="tabs" id="tabs">
+          <div class="tabs-item activated" tabIndex="1">Remote Collaboration</div>
+          <div class="tabs-item" tabIndex="2">Convenience Health</div>
+          <div class="tabs-item" tabIndex="3">Medical System</div>
+          <div class="tabs-item" tabIndex="4">Platform Management</div>
+        </div>
+        <div class="tab-content" id="tabs-content">
+          <div class="icons">
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com:7022/tmsclinic/login/login.action">Comprehensive Consultation</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com:7022/tmsimage/login/login.action?model=image">Imaging Diagnosis</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com:7037">Pathological Diagnosis</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com:7024/MedExSSO/Index.aspx">ECG Diagnosis</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com:7006/rcs/base">Remote Clinic</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com:7004/sxzz/base">Two-Way Referral</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.wisdommedical.cn">Remote Education</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com">Remote Monitoring</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com:7028">Calling Center</a></div>
+          </div>
+          <div class="icons" style="display: none;">
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">Online Consultation</a></div>
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">Nursing Service</a></div>
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">Health Management</a></div>
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">Family Doctor Signing</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.ehaoyao.com/">Online Pharmacy</a></div>
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">Pharmaceutical Service</a></div>
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">Health Advisory</a></div>
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">Health Information</a></div>
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">Electronic Health Record</a></div>
+          </div>
+          <div class="icons" style="display: none;">
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">Cloud HIS</a></div>
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">Cloud LIS</a></div>
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">Cloud Imaging</a></div>
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">Cloud ECG</a></div>
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">Cloud Pharmacy</a></div>
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">Rational Use Of Drugs</a></div>
+            <div class="icons-item"><a target ="_blank" href="javascript:alert('敬请期待！');">Clinical Pathway</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.metstr.com/login.aspx?mode=User&user=k99612&pass=247122&class=BB">Clinical Clinic</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com:7027/wanfang/zdyfy.html">E-Library</a></div>
+          </div>
+          <div class="icons" style="display: none;">
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com:7001/serverProject/base">Integrated Management</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com:7025">Emergency Command</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com:7004/operationsServer/base">Platform Operation And Maintenance</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com:7004/monitorServer/base">Platform Monitoring</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com:7004/registerServer/base">Registration Management</a></div>
+            <div class="icons-item"><a target ="_blank" href="http://www.hnsycyxzx.com:7004/registerServer/platform/business/BoRegMedicaorg/zhuce">Join Application</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-content">
+      <span>Copyright©2014 www.hnsycyxzx.com All Rights Reserved | <a href="http://www.miibeian.gov.cn">豫ICP备09042695号-7</a></span>
+      <span>
+        <span>All rights reserved : National Telemedicine Center of China.</span>
+        <span>Technical Support : HoloAlpha Health Technology (Wuhan) Co.,Ltd.</span>
+      </span>
+    </div>
+  </div>
+  <script src="/js/polyfill-85fcd06797.min.js"></script>
+  <script src="/js/jquery-1f0590b2ca.min.js"></script>
+  <script src="/js/index-ef1e210cdb.js"></script>
+  <script src="/js/tag-change-1d74c5f61f.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>国家远程医疗中心</title>
+  <link rel="stylesheet" href="/assets/css/base-a93efccaf2.css">
+  <link rel="stylesheet" href="/assets/css/index-a0824ae80f.css">
+  <script src="/js/axios-897d53a22d.min.js"></script>
+  <script src="/js/js_init-772690fcbe.js"></script>
+</head>
+<body class="index">
+  <div class="main">
+    <div class="hd-control">
+      <div>
+        <span class="icon menu"></span>
+        <!-- <span class="icon lang"><a href="javascript:void(0);" onClick="cLang()">En</a></span> -->
+        <span class="icon lang"><a href="javascript: alert('功能即将开放，敬请期待！');">En</a></span>
+      </div>
+    </div>
+    <div class="content">
+      <div class="logo">
+        <img src="http://www.htcc.org.cn/static/images/logo.png" alt="logo">
+      </div>
+      <div class="title">
+        <h2 class="cn">国家远程医疗中心</h1>
+        <h2 class="en">National Telemedicine Center of China</h1>
+      </div>
+      <div class="btn-group">
+        <a href="/page/main.html" class="btn primary">官 方 网 站</a>
+        <a href="/page/telem-colla.html" class="btn blue">综合服务平台</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="bottom-bar" id="hotNews"></div>
+    <div class="footer-content">
+      <span>Copyright©2014 www.hnsycyxzx.com All Rights Reserved | <a href="http://www.miibeian.gov.cn">豫ICP备09042695号-7</a></span>
+      <span>
+        <span>版权所有：国家远程医疗中心</span>
+        <span>技术支持：全息云通健康科技（北京）有限公司</span>
+      </span>
+    </div>
+  </div>
+  <script src="/js/polyfill-85fcd06797.min.js"></script>
+  <script src="/js/jquery-1f0590b2ca.min.js"></script>
+  <script src="/js/index-ef1e210cdb.js"></script>
+  <script>
+    function cLang() {
+      var name = window.location.pathname;
+      window.location.pathname = '/en' + name;
+      if (window.localStorage) {
+        localStorage.setItem('lang', 'en');
+      }
+    }
+  </script>
+</body>
+</html>

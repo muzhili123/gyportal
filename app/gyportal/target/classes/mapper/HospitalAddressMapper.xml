@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.gyportal.repository.mybatis.HospitalAddressReposity">
+    <resultMap id="hospitalAddressMap" type="com.gyportal.model.HospitalAddress">
+        <id column="address_id" property="address_id" />
+        <result column="address_name" property="address_name" />
+        <result column="address_name_en" property="address_name_en" />
+        <result column="parent_id" property="parent_id" />
+        <collection property="hospitals" ofType="com.gyportal.model.Hospital">
+            <result  property="id" column="id"/>
+            <result  property="name" column="name"/>
+            <result  property="url" column="path"/>
+        </collection>
+    </resultMap>
+
+    <!-- 分页获取所有医院地址列表 -->
+    <select id="findAllByPage" resultMap="hospitalAddressMap">
+        select DISTINCT hospital_address.address_name,hospital_address.address_name_en,hospital_address.address_id
+        from hospital_address RIGHT JOIN hospital on hospital_address.address_id = hospital.address_id
+        <if test="language == 'en'">
+            and hospital.name_en != ''
+            where hospital_address.address_name_en != ''
+        </if>
+        ORDER by hospital_address.address_id
+        limit #{start},#{pageSize}
+    </select>
+
+    <select id="count" resultType="Integer">
+        select count(DISTINCT hospital_address.address_name) from hospital_address
+        RIGHT JOIN hospital on hospital_address.address_id = hospital.address_id
+        <if test="language == 'en'">
+            and hospital.name_en != ''
+            and hospital_address.address_name_en != ''
+        </if>
+    </select>
+
+    <!-- 查询所有医院地址名称 -->
+    <select id="findAll" resultMap="hospitalAddressMap">
+        select address_id,address_name,address_name_en from hospital_address;
+    </select>
+
+    <!-- 名称查询医院地址 -->
+    <select id="findHospitalAddressByName" resultMap="hospitalAddressMap">
+        select address_id,address_name,address_name_en from hospital_address
+        WHERE hospital_address.address_name LIKE #{addressName} OR hospital_address.address_name_en LIKE #{addressName};
+    </select>
+
+    <!-- id查询 -->
+    <select id="getOne" resultMap="hospitalAddressMap">
+        SELECT hospital_address.*,hospital.id,hospital.name,hospital.url FROM hospital_address
+        left join hospital on hospital_address.address_id = hospital.address_id
+        <where>
+            hospital_address.address_id = #{hospitalAddressId}
+        </where>
+    </select>
+
+    <select id="findIdByAddressName" resultType="Integer">
+        select hospital_address.address_id from hospital_address where address_name = #{addressName} limit 1;
+    </select>
+
+    <!--&lt;!&ndash; 新建 &ndash;&gt;-->
+    <insert id="insert" parameterType="com.gyportal.model.HospitalAddress">
+        <selectKey keyProperty="address_id" resultType="java.lang.Integer"
+                   order="AFTER">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into hospital_address (address_name,address_name_en, parent_id)
+        values
+        (#{address_name},#{address_name_en}, #{parent_id})
+    </insert>
+
+    <!-- 更新 -->
+    <update id="update" parameterType="com.gyportal.model.HospitalAddress">
+        update hospital_address set
+        address_name = #{address_name},
+        address_name_en = #{address_name_en}
+        <where>
+            address_id = #{address_id}
+        </where>
+    </update>
+
+    <!-- 删除 -->
+    <delete id="delete">
+        delete from hospital_address
+            <where>
+                <if test="groupId !=null">
+                    address_id in
+                    <foreach collection="groupId" item="item" index="index"
+                        open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </delete>
+
+</mapper>

@@ -1,0 +1,1 @@
+$(function(){$("#tabs").click(function(t){var a=t.target.tabIndex;$($("#tabs>.tabs-item")[a-1]).addClass("activated").siblings().removeClass("activated"),$($("#tabs-content>.icons")[a-1]).show().siblings().hide()})});

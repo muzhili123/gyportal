@@ -1,0 +1,17 @@
+{
+  "axios.min.js": "axios-897d53a22d.min.js",
+  "getArticle.js": "getArticle-ec3d4b4bf1.js",
+  "getHospital-en.js": "getHospital-en-466b2a9210.js",
+  "getHospital.js": "getHospital-82c3cc2c23.js",
+  "getSearchRs.js": "getSearchRs-3cbb976be1.js",
+  "getStaticContent.js": "getStaticContent-d7aee5c500.js",
+  "getSubjectInfo.js": "getSubjectInfo-725a23a6d3.js",
+  "index.js": "index-ef1e210cdb.js",
+  "jquery.min.js": "jquery-1f0590b2ca.min.js",
+  "jquery.pagination.js": "jquery-e37c65ca04.pagination.js",
+  "js_init.js": "js_init-772690fcbe.js",
+  "main.js": "main-dcde9078eb.js",
+  "news.js": "news-3be0ed5efb.js",
+  "polyfill.min.js": "polyfill-85fcd06797.min.js",
+  "tag-change.js": "tag-change-1d74c5f61f.js"
+}
